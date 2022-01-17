@@ -151,7 +151,7 @@ public class DrawingEditor extends JFrame {
 		toolArea.setSize(new Dimension(0, 0));
 		add(toolArea, BorderLayout.SOUTH);
 
-        ShapeTool rectTool = new ShapeTool(this, toolArea);
+        RectangleTool rectTool = new RectangleTool(this, toolArea);
         tools.add(rectTool);
 
         MoveTool moveTool = new MoveTool(this, toolArea);
