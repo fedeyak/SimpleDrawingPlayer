@@ -60,7 +60,7 @@ public class OvalTool extends Tool {
 
     //EFFECTS: Returns the string for the label.
     private String getLabel() {
-        return "Shape";
+        return "Oval";
     }
 
     //EFFECTS: Constructs and returns the new shape
