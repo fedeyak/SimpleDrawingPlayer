@@ -61,7 +61,7 @@ public class RectangleTool extends Tool {
 
 	//EFFECTS: Returns the string for the label.
 	private String getLabel() {
-		return "Shape";
+		return "Rectangle";
 	}
 
 	//EFFECTS: Constructs and returns the new shape
