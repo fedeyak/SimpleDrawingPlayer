@@ -15,9 +15,8 @@ public class Oval extends Shape {
         this.midiSynth = midiSynth;
         instrument = 75;
         playLineCoord = 0;
-        PLAYING_COLOR = new Color(230, 158, 60);
+        PLAYING_COLOR = new Color(68, 90, 60);
     }
-
 
     public Oval(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -28,18 +27,31 @@ public class Oval extends Shape {
         return (this.x <= x) && (x <= this.x + width);
     }
 
-    // EFFECTS: return true iff the given y value is within the bounds of the Shape
-    public boolean containsY(int y) {
-        return (this.y <= y) && (y <= this.y + height);
+    // EFFECTS: return true if this Oval contains the given point p, else return false
+    @Override
+    public boolean contains(Point p) {
+        final double TOL = 1.0e-6;
+        double halfWidth = width / 2.0;
+        double halfHeight = height / 2.0;
+        double diff = 0.0;
+
+        if (halfWidth > 0.0) {
+            diff = diff + sqrDiff(x + halfWidth, p.x) / (halfWidth * halfWidth);
+        } else {
+            diff = diff + sqrDiff(x + halfWidth, p.x);
+        }
+        if (halfHeight > 0.0) {
+            diff = diff + sqrDiff(y + halfHeight, p.y) / (halfHeight * halfHeight);
+        } else {
+            diff = diff + sqrDiff(y + halfHeight, p.y);
+        }
+        return  diff <= 1.0 + TOL;
     }
 
-    // EFFECTS: return true if the given Point (x,y) is contained within the bounds of this Shape
-    @Override
-    public boolean contains(Point point) {
-        int point_x = point.x;
-        int point_y = point.y;
-
-        return containsX(point_x) && containsY(point_y);
+    // Compute square of difference
+// EFFECTS: returns the square of the difference of num1 and num2
+    private double sqrDiff(double num1, double num2) {
+        return (num1 - num2) * (num1 - num2);
     }
 
     // EFFECTS: draws this Shape on the SimpleDrawingPlayer, if the shape is selected, Shape is filled in
@@ -67,13 +79,13 @@ public class Oval extends Shape {
     //EFFECTS: draws the shape
     @Override
     protected void drawGraphics(Graphics g) {
-        g.drawRect(x, y, width, height);
+        g.drawOval(x, y, width, height);
     }
 
     //EFFECTS: fills the shape
     @Override
     protected void fillGraphics(Graphics g) {
-        g.fillRect(x, y, width, height);
+        g.fillOval(x, y, width, height);
     }
 
 
