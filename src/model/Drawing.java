@@ -11,26 +11,26 @@ public class Drawing extends JPanel {
 
     private static final int MUSIC_LINES_SPACE = 30;
 
-	private List<Shape> shapes;
+	private List<Oval> ovals;
 	private int playLineColumn;
 
 
 	public Drawing() {
 		super();
-		shapes = new ArrayList<Shape>();
+		ovals = new ArrayList<Oval>();
 		setBackground(Color.white);
 	}
 
 	// getters
-    public List<Shape> getShapes() { return this.shapes; }
+    public List<Oval> getShapes() { return this.ovals; }
     public int getPlayLineColumn() { return this.playLineColumn; }
 
     // setters
 	public void setPlayLineColumn(int plc) { playLineColumn = plc; }
 
     // EFFECTS: return true if the given Shape s is contained in Drawing
-    public boolean containsShape(Shape s) {
-		return shapes.contains(s);
+    public boolean containsShape(Oval s) {
+		return ovals.contains(s);
 	}
 
     // EFFECTS: paints grid, playback line, and all figures in drawing
@@ -39,8 +39,8 @@ public class Drawing extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		drawHorizontalNotesLines(g);
-		for (Shape shape : shapes) {
-            shape.draw(g);
+		for (Oval oval : ovals) {
+            oval.draw(g);
         }
 	}
 
@@ -60,33 +60,33 @@ public class Drawing extends JPanel {
 
     // MODIFIES: this
     // EFFECTS:  adds the given shape to the drawing
-	public void addShape(Shape shape) {
-		shapes.add(shape);
+	public void addShape(Oval oval) {
+		ovals.add(oval);
 	}
 
 
     // MODIFIES: this
     // EFFECTS:  removes shape from the drawing
-	public void removeShape(Shape shape) {
-		shapes.remove(shape);
+	public void removeShape(Oval oval) {
+		ovals.remove(oval);
 		repaint();
 	}
 
 	// EFFECTS: returns the Shape at a given Point in Drawing, if any
-	public Shape getShapesAtPoint(Point point) {
-		for (Shape shape : shapes) {
-			if (shape.contains(point))
-				return shape;
+	public Oval getShapesAtPoint(Point point) {
+		for (Oval oval : ovals) {
+			if (oval.contains(point))
+				return oval;
 		}
 		return null;
 	}
 
 	// EFFECTS: returns all Shapes at given column corresponding to an x-coordinate
-	public List<Shape> getShapesAtColumn(int x) {
-	    List<Shape> shapesAtColumn = new ArrayList<Shape>();
-		for (Shape shape : shapes) {
-			if (shape.containsX(x))
-				shapesAtColumn.add(shape);
+	public List<Oval> getShapesAtColumn(int x) {
+	    List<Oval> shapesAtColumn = new ArrayList<Oval>();
+		for (Oval oval : ovals) {
+			if (oval.containsX(x))
+				shapesAtColumn.add(oval);
 		}
 		return shapesAtColumn;
 	}

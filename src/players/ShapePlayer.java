@@ -1,20 +1,20 @@
 package players;
 
 import model.Drawing;
-import model.Shape;
+import model.Oval;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ShapePlayer implements ActionListener {
-    private Shape shape;
+    private Oval oval;
     private Drawing drawing;
     private Timer t = null;
     private int playingColumn;
 
-    public ShapePlayer(Drawing drawing, Shape shape, Timer t){
-        this.shape = shape;
+    public ShapePlayer(Drawing drawing, Oval oval, Timer t){
+        this.oval = oval;
         this.drawing = drawing;
         this.t = t;
         playingColumn = 0;
@@ -40,17 +40,17 @@ public class ShapePlayer implements ActionListener {
     // EFFECTS:  shapes in the current playingColumn are selected and played
     //           the frame is repainted
     private void playColumn() {
-        shape.setPlayLineCoord(playingColumn);
-        shape.selectAndPlay();
+        oval.setPlayLineCoord(playingColumn);
+        oval.selectAndPlay();
         drawing.repaint();
     }
 
     // MODIFIES: this
     // EFFECTS:  stops t when the playingColumn is past the edge of the frame
     private void stopPlayingWhenDone() {
-        if (playingColumn > shape.getWidth()){
-            shape.unselectAndStopPlaying();
-            shape.setPlayLineCoord(0);
+        if (playingColumn > oval.getWidth()){
+            oval.unselectAndStopPlaying();
+            oval.setPlayLineCoord(0);
             drawing.repaint();
             t.stop();
         }

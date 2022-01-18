@@ -1,7 +1,7 @@
 package ui.tools;
 
 
-import model.Shape;
+import model.Oval;
 import players.ShapePlayer;
 import ui.DrawingEditor;
 
@@ -42,10 +42,10 @@ public class PlayShapeTool extends Tool {
 
     // EFFECTS: creates a ShapePlayer playing the current shape and starts it playing
     private void playShapeAt(Point p) {
-        Shape shape = editor.getShapeInDrawing(p);
-        if (shape != null){
+        Oval oval = editor.getShapeInDrawing(p);
+        if (oval != null){
             final Timer t = new Timer(2, null);
-            ActionListener a = new ShapePlayer(editor.getCurrentDrawing(), shape, t);
+            ActionListener a = new ShapePlayer(editor.getCurrentDrawing(), oval, t);
             t.addActionListener(a);
             t.setInitialDelay(0);
             t.start(); //Note to students: this line invokes DrawingPlayer.actionPerformed repeatedly until the timer is stopped

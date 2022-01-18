@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Shape;
+import model.Oval;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -10,11 +10,11 @@ import java.awt.event.MouseEvent;
 
 public class DeleteTool extends Tool {
 
-	private Shape shapeToDelete;
+	private Oval ovalToDelete;
 
 	public DeleteTool(DrawingEditor editor, JComponent parent) {
 		super(editor, parent);
-		shapeToDelete = null;
+		ovalToDelete = null;
 	}
 
     // MODIFIES: this
@@ -38,9 +38,9 @@ public class DeleteTool extends Tool {
 	//           selects the shape and plays it
 	@Override
 	public void mousePressedInDrawingArea(MouseEvent e) {
-		shapeToDelete = editor.getShapeInDrawing(e.getPoint());
-		if (shapeToDelete != null) {
-			shapeToDelete.selectAndPlay();
+		ovalToDelete = editor.getShapeInDrawing(e.getPoint());
+		if (ovalToDelete != null) {
+			ovalToDelete.selectAndPlay();
 		}
 	}
 
@@ -48,10 +48,10 @@ public class DeleteTool extends Tool {
     // EFFECTS:  unselects the shape being deleted, and removes it from the drawing
 	@Override
 	public void mouseReleasedInDrawingArea(MouseEvent e) {
-		if (shapeToDelete != null) {
-		    shapeToDelete.unselectAndStopPlaying();
-			editor.removeFromDrawing(shapeToDelete);
-			shapeToDelete = null;
+		if (ovalToDelete != null) {
+		    ovalToDelete.unselectAndStopPlaying();
+			editor.removeFromDrawing(ovalToDelete);
+			ovalToDelete = null;
 		}
 	}
 
@@ -60,9 +60,9 @@ public class DeleteTool extends Tool {
 	//           selects the shape and plays it
 	@Override
 	public void mouseDraggedInDrawingArea(MouseEvent e) {
-        shapeToDelete = editor.getShapeInDrawing(e.getPoint());
-        if (shapeToDelete != null) {
-            shapeToDelete.selectAndPlay();
+        ovalToDelete = editor.getShapeInDrawing(e.getPoint());
+        if (ovalToDelete != null) {
+            ovalToDelete.selectAndPlay();
         }
 	}
 

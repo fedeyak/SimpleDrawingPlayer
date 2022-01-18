@@ -1,7 +1,7 @@
 package ui.tools;
 
 
-import model.Shape;
+import model.Oval;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 public class RectangleTool extends Tool {
-	private Shape shape;
+	private Oval oval;
 
     public RectangleTool(DrawingEditor editor, JComponent parent) {
 		super(editor, parent);
-		shape = null;
+		oval = null;
 	}
 
     // MODIFIES: this
@@ -38,9 +38,9 @@ public class RectangleTool extends Tool {
 	@Override
 	public void mousePressedInDrawingArea(MouseEvent e) {
 		makeShape(e);
-		shape.selectAndPlay();
-		shape.setBounds(e.getPoint());
-		editor.addToDrawing(shape);
+		oval.selectAndPlay();
+		oval.setBounds(e.getPoint());
+		editor.addToDrawing(oval);
 	}
 
 
@@ -48,15 +48,15 @@ public class RectangleTool extends Tool {
     // EFFECTS:  unselects this shape, and sets it to null
 	@Override
 	public void mouseReleasedInDrawingArea(MouseEvent e) {
-        shape.unselectAndStopPlaying();
-	    shape = null;
+        oval.unselectAndStopPlaying();
+	    oval = null;
 	}
 
 	// MODIFIES: this
     // EFFECTS:  sets the bounds of thes shape to where the mouse is dragged to
 	@Override
 	public void mouseDraggedInDrawingArea(MouseEvent e) {
-		shape.setBounds(e.getPoint());
+		oval.setBounds(e.getPoint());
 	}
 
 	//EFFECTS: Returns the string for the label.
@@ -66,7 +66,7 @@ public class RectangleTool extends Tool {
 
 	//EFFECTS: Constructs and returns the new shape
 	private void makeShape(MouseEvent e) {
-		shape = new Shape(e.getPoint(), editor.getMidiSynth());
+		oval = new Oval(e.getPoint(), editor.getMidiSynth());
 	}
 
 	private class ShapeToolClickHandler implements ActionListener {

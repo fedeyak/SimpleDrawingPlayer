@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Shape;
+import model.Oval;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -11,12 +11,12 @@ import java.awt.event.MouseEvent;
 
 public class MoveTool extends Tool {
 
-	private Shape shapeToMove;
+	private Oval ovalToMove;
 	private Point start;
 
     public MoveTool(DrawingEditor editor, JComponent parent) {
 		super(editor, parent);
-		shapeToMove = null;
+		ovalToMove = null;
 		start = null;
 	}
 
@@ -42,9 +42,9 @@ public class MoveTool extends Tool {
 	//           the move with the current location of the MouseEvent
 	@Override
 	public void mousePressedInDrawingArea(MouseEvent e) {
-		shapeToMove = editor.getShapeInDrawing(e.getPoint());
-		if (shapeToMove != null) {
-			shapeToMove.selectAndPlay();
+		ovalToMove = editor.getShapeInDrawing(e.getPoint());
+		if (ovalToMove != null) {
+			ovalToMove.selectAndPlay();
 			start = e.getPoint();
 		}
 	}
@@ -53,9 +53,9 @@ public class MoveTool extends Tool {
     // EFFECTS:  unselect the shape, and set the shape to be moved to null
 	@Override
 	public void mouseReleasedInDrawingArea(MouseEvent e) {
-		if (shapeToMove != null) {
-			shapeToMove.unselectAndStopPlaying();
-			shapeToMove = null;
+		if (ovalToMove != null) {
+			ovalToMove.unselectAndStopPlaying();
+			ovalToMove = null;
 		}
 	}
 
@@ -63,11 +63,11 @@ public class MoveTool extends Tool {
     // EFFECTS:  compute the change in the x and y position of the mouse, and move the shape
 	@Override
 	public void mouseDraggedInDrawingArea(MouseEvent e) {
-		if (shapeToMove != null) {
+		if (ovalToMove != null) {
 			int dx = (int) (e.getPoint().getX() - start.getX());
 			int dy = (int) (e.getPoint().getY() - start.getY());
 			start = e.getPoint();
-			shapeToMove.move(dx, dy);
+			ovalToMove.move(dx, dy);
 		}
 	}
 

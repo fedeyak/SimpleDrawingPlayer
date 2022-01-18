@@ -2,7 +2,7 @@ package ui;
 
 
 import model.Drawing;
-import model.Shape;
+import model.Oval;
 import sound.MidiSynth;
 import ui.tools.*;
 
@@ -87,13 +87,13 @@ public class DrawingEditor extends JFrame {
 
 	// MODIFIES: this
 	// EFFECTS:  adds given Shape to currentDrawing
-	public void addToDrawing(Shape f) {
+	public void addToDrawing(Oval f) {
 		currentDrawing.addShape(f);
 	}
 
 	// MODIFIES: this
 	// EFFECTS:  removes given Shape from currentDrawing
-	public void removeFromDrawing(Shape f) {
+	public void removeFromDrawing(Oval f) {
 		currentDrawing.removeShape(f);
 	}
 
@@ -139,7 +139,7 @@ public class DrawingEditor extends JFrame {
 	}
 
 	// EFFECTS: return shapes at given point at the currentDrawing
-	public Shape getShapeInDrawing(Point point) {
+	public Oval getShapeInDrawing(Point point) {
 		return currentDrawing.getShapesAtPoint(point);
 	}
 
