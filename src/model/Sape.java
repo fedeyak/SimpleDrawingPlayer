@@ -6,10 +6,10 @@ import sound.MidiSynth;
 import java.awt.*;
 
 
-public class Oval extends Shape {
+public class Sape extends Shape {
 
 
-    public Oval(Point topLeft, MidiSynth midiSynth) {
+    public Sape(Point topLeft, MidiSynth midiSynth) {
         this((int) topLeft.getX(), (int) topLeft.getY(), 0, 0); //note to students: calls the other constructor!
         selected = false;
         this.midiSynth = midiSynth;
@@ -18,7 +18,7 @@ public class Oval extends Shape {
         PLAYING_COLOR = new Color(68, 90, 60);
     }
 
-    public Oval(int x, int y, int w, int h) {
+    public Sape(int x, int y, int w, int h) {
         super(x, y, w, h);
     }
 

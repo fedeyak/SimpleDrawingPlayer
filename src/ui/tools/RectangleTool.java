@@ -2,6 +2,7 @@ package ui.tools;
 
 
 import model.Rectangle;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 public class RectangleTool extends Tool {
-	private Rectangle rectangle;
+	private Shape rectangle;
 
     public RectangleTool(DrawingEditor editor, JComponent parent) {
 		super(editor, parent);

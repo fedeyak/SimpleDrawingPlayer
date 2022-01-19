@@ -1,6 +1,7 @@
 package ui.tools;
 
-import model.Oval;
+import model.Sape;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 public class OvalTool extends Tool {
-    private Oval oval;
+    private Shape oval;
 
     public OvalTool(DrawingEditor editor, JComponent parent) {
         super(editor, parent);
@@ -65,7 +66,7 @@ public class OvalTool extends Tool {
 
     //EFFECTS: Constructs and returns the new shape
     private void makeShape(MouseEvent e) {
-        oval = new Oval(e.getPoint(), editor.getMidiSynth());
+        oval = new Sape(e.getPoint(), editor.getMidiSynth());
     }
 
     private class ShapeToolClickHandler implements ActionListener {

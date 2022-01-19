@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Oval;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 
 public class DeleteTool extends Tool {
 
-	private Oval ovalToDelete;
+	private Shape ovalToDelete;
 
 	public DeleteTool(DrawingEditor editor, JComponent parent) {
 		super(editor, parent);

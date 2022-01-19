@@ -32,6 +32,9 @@ public abstract class Shape {
         this.playLineCoord = playLineCoord;
     }
 
+    // EFFECTS: return true iff the given x value is within the bounds of the Shape
+    public abstract boolean containsX(int x);
+
     // EFFECTS: return true if the given Point (x,y) is contained within the bounds of this Shape
     public abstract boolean contains(Point point);
 

@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Oval;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class MoveTool extends Tool {
 
-	private Oval ovalToMove;
+	private Shape ovalToMove;
 	private Point start;
 
     public MoveTool(DrawingEditor editor, JComponent parent) {

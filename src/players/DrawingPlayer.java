@@ -1,7 +1,7 @@
 package players;
 
 import model.Drawing;
-import model.Oval;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -16,16 +16,16 @@ public class DrawingPlayer implements ActionListener {
     private Timer timer;
     private int playingColumn;
 
-    private List<Oval> lastColumnPlayed;
-    private List<Oval> shapesInColumn;
+    private List<Shape> lastColumnPlayed;
+    private List<Shape> shapesInColumn;
 
     // EFFECTS: constructs a DrawingPlayer
     public DrawingPlayer(Drawing drawing, Timer timer){
         this.drawing = drawing;
         this.timer = timer;
         playingColumn = 0;
-        lastColumnPlayed = new ArrayList<Oval>();
-        shapesInColumn = new ArrayList<Oval>();
+        lastColumnPlayed = new ArrayList<Shape>();
+        shapesInColumn = new ArrayList<Shape>();
     }
 
     // MODIFIES: this
@@ -67,13 +67,13 @@ public class DrawingPlayer implements ActionListener {
     private void selectAndPlayShapes() {
         shapesInColumn = drawing.getShapesAtColumn(playingColumn);
 
-        for (Oval oval : lastColumnPlayed) {
+        for (Shape oval : lastColumnPlayed) {
             if (!shapesInColumn.contains(oval)) {
                 oval.unselectAndStopPlaying();
             }
         }
 
-        for (Oval oval : shapesInColumn) {
+        for (Shape oval : shapesInColumn) {
             if (!lastColumnPlayed.contains(oval)) {
                 oval.selectAndPlay();
             }

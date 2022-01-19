@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Oval;
+import model.Shape;
 import ui.DrawingEditor;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 
 public class ResizeTool extends Tool {
 
-	private Oval ovalToResize;
+	private Shape ovalToResize;
 
     // EFFECTS: creates a new ResizeTool with the given editor and parent. Sets shapeToResize to null
 	public ResizeTool(DrawingEditor editor, JComponent parent) {
